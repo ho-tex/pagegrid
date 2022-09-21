@@ -1,12 +1,12 @@
 % \iffalse meta-comment
 %
 % File: pagegrid.dtx
-% Version: 2016/05/16 v1.5
+% Version: 2022-09-21 v1.6
 % Info: Print page grid in background
 %
 % Copyright (C)
 %    2009 Heiko Oberdiek
-%    2016-2019 Oberdiek Package Support Group
+%    2016-2022 Oberdiek Package Support Group
 %    https://github.com/ho-tex/oberdiek/issues
 %
 % This work may be distributed and/or modified under the
@@ -80,7 +80,7 @@
 \input docstrip.tex
 \Msg{************************************************************************}
 \Msg{* Installation}
-\Msg{* Package: pagegrid 2016/05/16 v1.5 Print page grid in background (HO)}
+\Msg{* Package: pagegrid 2022-09-21 v1.6 Print page grid in background (HO)}
 \Msg{************************************************************************}
 
 \keepsilent
@@ -92,11 +92,11 @@
 This is a generated file.
 
 Project: pagegrid
-Version: 2016/05/16 v1.5
+Version: 2022-09-21 v1.6
 
 Copyright (C)
    2009 Heiko Oberdiek
-   2016-2019 Oberdiek Package Support Group
+   2016-2022 Oberdiek Package Support Group
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either
@@ -156,7 +156,7 @@ and the derived files
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesFile{pagegrid.drv}%
-  [2016/05/16 v1.5 Print page grid in background (HO)]%
+  [2022-09-21 v1.6 Print page grid in background (HO)]%
 \documentclass{ltxdoc}
 \usepackage{holtxdoc}[2011/11/22]
 \begin{document}
@@ -170,7 +170,7 @@ and the derived files
 % \GetFileInfo{pagegrid.drv}
 %
 % \title{The \xpackage{pagegrid} package}
-% \date{2016/05/16 v1.5}
+% \date{2022-09-21 v1.6}
 % \author{Heiko Oberdiek\thanks
 % {Please report any issues at \url{https://github.com/ho-tex/oberdiek/issues}}}
 %
@@ -402,7 +402,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@pagegrid.sty\endcsname
 \ProvidesPackage{pagegrid}%
-  [2016/05/16 v1.5 Print page grid in background (HO)]%
+  [2022-09-21 v1.6 Print page grid in background (HO)]%
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -473,14 +473,17 @@ and the derived files
 \RequirePackage{kvoptions}[2009/07/17]
 %    \end{macrocode}
 %    \begin{macrocode}
-\begingroup\expandafter\expandafter\expandafter\endgroup
-\expandafter\ifx\csname stockwidth\endcsname\relax
-  \def\pagegrid@width{\paperwidth}%
-  \def\pagegrid@height{\paperheight}%
-\else
-  \def\pagegrid@width{\stockwidth}%
-  \def\pagegrid@height{\stockheight}%
-\fi
+\def\pagegrid@width{\paperwidth}%
+\def\pagegrid@height{\paperheight}%
+\@ifundefined{stockwidth}{}
+ {%
+   \ifdim \stockwidth > 0pt\relax
+    \ifdim \stockheight > 0pt \relax
+     \def\pagegrid@width{\stockwidth}%
+     \def\pagegrid@height{\stockheight}%
+    \fi
+   \fi
+ }
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -946,6 +949,9 @@ and the derived files
 %   \begin{Version}{2016/05/16 v1.5}
 %   \item
 %     Documentation updates.
+%   \end{Version}
+%   \begin{Version}{2022-09-21 v1.6}
+%   \item Updated
 %   \end{Version}
 % \end{History}
 %
