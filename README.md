@@ -1,2 +1,4 @@
 # pagegrid
-pagegrid package
+
+* pagegrid: prints a page grid in the background;
+
