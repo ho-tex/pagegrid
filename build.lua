@@ -9,7 +9,7 @@ sourcefiles={"*.dtx"}
 installfiles={"*.sty","*.lua"}
 
 
-checkconfigs = {"config-noxetex"}
+-- checkconfigs = {"config-noxetex"}
 
 --function docinit_hook ()
 -- return  cp("pagegrid.bib", "build/unpacked" ,"build/doc")
